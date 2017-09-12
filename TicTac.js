@@ -19,7 +19,7 @@ function clearboard() {
 
 var reset = document.querySelector("#b")
 
-reset.addEventListener(click,clearboard)
+reset.addEventListener('click',clearboard)
 
 
 //marker
@@ -39,7 +39,7 @@ function marker() {
 //Change marke
 
 for(i = 0; i < sqaures.length; i++){
-    sqaures[i].addEventListener(click,marker)
+    sqaures[i].addEventListener('click',marker)
 }
 
 
