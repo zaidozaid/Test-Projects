@@ -12,6 +12,16 @@ function returncolor(rowIndex,colIndex) {
 
 function checkBottom(collIndex) {
 
+ var colorReport =returncolor(5,collIndex)
 
+    for(var row=5;row < -1;row--){
+
+     colorReport = returncolor(row,collIndex)
+        if (colorReport === 'rgb(128, 128, 128)'){
+         return row
+        }
+
+
+    }
 
 }
