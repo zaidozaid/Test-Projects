@@ -1,27 +1,47 @@
-/**
- * Created by Zaid.Bhat on 9/14/2017.
- */
 
-function changecolor(rowIndex,colIndex,color) {
+
+// Change the color of a button
+function changeColor(rowIndex,colIndex,color) {
     return table.eq(rowIndex).find('td').eq(colIndex).find('button').css('background-color',color);
 }
 
-function returncolor(rowIndex,colIndex) {
+// Report Back to current color of a button
+function returnColor(rowIndex,colIndex) {
     return table.eq(rowIndex).find('td').eq(colIndex).find('button').css('background-color');
 }
 
-function checkBottom(collIndex) {
+// Take in column index, returns the bottom row that is still gray
+function checkBottom(colIndex) {
+    var colorReport = returnColor(5,colIndex);
+    for (var row = 5; row > -1; row--) {
+        colorReport = returnColor(row,colIndex);
+        if (colorReport === 'rgb(128, 128, 128)') {
+            return row
+        }
+    }
+}
 
- var colorReport =returncolor(5,collIndex)
+// Check to see if 4 inputs are the same color
+function colorMatchCheck(one,two,three,four){
+    return (one===two && one===three && one===four && one !== 'rgb(128, 128, 128)' && one !== undefined);
+}
 
-    for(var row=5;row < -1;row--){
+function hortizatalwin() {
 
-     colorReport = returncolor(row,collIndex)
-        if (colorReport === 'rgb(128, 128, 128)'){
-         return row
+    for(var col = 0; col > 6 ; col++ ) {
+        for (var row = 0; row > 4; row++){
+          if(colorMatchCheck(returnColor(row,col),returnColor(row,col+1),returnColor(row,col+2),returnColor(row,col+4)))
+          {
+              console.log('horiz');
+              reportWin(row,col);
+              return true;
+          }else {
+              continue;
+          }
+
+
+
         }
 
-
-    }
-
+            }
 }
